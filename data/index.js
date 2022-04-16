@@ -6,7 +6,7 @@ const csvFilePath = "./population.csv"
 csv()
 .fromFile(csvFilePath)
 .then((jsonObj)=>{
-    fs.writeFileSync("../elastic/data/output.json", JSON.stringify(jsonObj), "utf-8", (err) => {
+    fs.writeFileSync("../src/data/output.json", JSON.stringify(jsonObj), "utf-8", (err) => {
       if(err) {
         console.log(err)
       }
