@@ -19,12 +19,13 @@
   "license": "MIT",
   "devDependencies": {
     "dotenv": "^16.0.0",
+    "eslint": "^8.13.0",
     "nodemon": "^2.0.15"
   },
   "nodemonConfig": {
     "ext": "js,json,hbs,html,css"
   },
   "dependencies": {
-    "eslint": "^8.13.0"
+    "csvtojson": "^2.0.10"
   }
 }
