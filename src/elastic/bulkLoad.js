@@ -15,7 +15,7 @@ async function run() {
             Age: { type: "text" },
             Male: { type: "integer" },
             Female: { type: "integer" },
-            timestamp: {type: "text"}
+            timestamp: {type: "date"}
           },
         },
       },
