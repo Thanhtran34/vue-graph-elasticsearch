@@ -4,24 +4,33 @@
     <title>World Population</title>
     <form @submit.prevent="search('country', 'year')">
       <select v-model="selectedCountry">
+        <option>Choose Country</option>
         <option
           v-for="(data, index) in countries"
           :key="index"
           v-bind:value="data.country"
         >
-        {{data.country}}
+          {{ data.country }}
         </option>
       </select>
       <br />
       <select v-model="selectedYear">
-        <option v-for="(data, index) in years" :key="index" v-bind:value="data.year">
-          {{data.year}}
+        <option>Choose Year</option>
+        <option
+          v-for="(data, index) in years"
+          :key="index"
+          v-bind:value="data.year"
+        >
+          {{ data.year }}
         </option>
       </select>
       <br />
-      <button @click="search('country', 'year')" class="btn btn-success">SEARCH</button>
+      <button @click="search('country', 'year')" class="btn btn-success">
+        SEARCH
+      </button>
     </form>
-    <BarChart :axisData="axisData"></BarChart>
+    <br />
+    <BarChart :axisData="axisData"/>
   </div>
 </template>
 
@@ -32,36 +41,35 @@ import BarChart from "./components/BarChart.vue";
 
 export default {
   name: "App",
-  items: null,
   components: {
-    BarChart
+    BarChart,
   },
   data() {
     return {
       countries: Data.getListOfCountries(),
       years: Data.getListOfYears(),
-      selectedCountry: null,
-      selectedYear: null,
-      axisData: this.items
+      selectedCountry: "Choose Country",
+      selectedYear: "Choose Year",
+      axisData: []
     };
   },
   methods: {
-   search(country, year) {
-     country = this.selectedCountry;
-     year = this.selectedYear;
-     axios
-      .get(`http://localhost:8080/search-country/${country}/${year}`)
-      .then((response) => {
-        console.log('SUCCESS')
-        console.log(response.data.records[0])
-        this.items = response.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-   }
-  }
-  }
+    search(country, year) {
+      country = this.selectedCountry;
+      year = this.selectedYear;
+      axios
+        .get(`http://localhost:8080/search-country/${country}/${year}`)
+        .then((response) => {
+          this.axisData = response.data.records
+                               .filter(el => el.Country === this.selectedCountry)
+                               .map(el => ({x: el.Age, y: parseInt(el.Male), country: el.Country}));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style>
@@ -76,7 +84,7 @@ export default {
 
 select {
   margin-bottom: 20px;
-  width: 100px;
+  width: auto;
 }
 
 button {

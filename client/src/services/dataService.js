@@ -35,9 +35,6 @@ class Data {
         country: "Australia",
       },
       {
-        country: "Australia New Zealand",
-      },
-      {
         country: "Austria",
       },
       {
