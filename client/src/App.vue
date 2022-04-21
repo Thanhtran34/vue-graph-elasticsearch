@@ -50,7 +50,7 @@ export default {
       years: Data.getListOfYears(),
       selectedCountry: "Choose Country",
       selectedYear: "Choose Year",
-      axisData: []
+      axisData: [],
     };
   },
   methods: {
@@ -85,10 +85,20 @@ export default {
 select {
   margin-bottom: 20px;
   width: auto;
+  font-size: 1.1rem;
 }
 
 button {
   width: auto;
   height: auto;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: rgb(113, 160, 190);
+}
+
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;
+  color: rgb(132, 187, 221);
 }
 </style>

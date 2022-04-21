@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     renderChart() {
-      const height = 420;
+      const height = 400;
       const roundedHeight = Math.ceil((height + 1) / 10) * 10;
       const width = 800;
       let color = d3.scaleOrdinal(d3.schemeCategory10);
