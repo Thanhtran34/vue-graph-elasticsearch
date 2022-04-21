@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- this part is needed to load data for bar chart faster-->
-    <p style="display:none">{{axisData}}</p>
+    <p style="display: none">{{ axisData }}</p>
     <svg></svg>
   </div>
 </template>
@@ -12,20 +12,20 @@ export default {
   name: "BarChart",
   props: ["axisData"],
   computed: {
-     filteredData() {
-      return this.axisData.filter(el => el.country)
+    filteredData() {
+      return this.axisData.filter((el) => el.country);
     },
     maxValue() {
-      return Math.max(...this.axisData.map(el => el.y))
+      return Math.max(...this.axisData.map((el) => el.y + el.z));
     },
-
   },
   methods: {
     renderChart() {
-      const height = 300;
+      const height = 420;
       const roundedHeight = Math.ceil((height + 1) / 10) * 10;
       const width = 800;
-
+      let color = d3.scaleOrdinal(d3.schemeCategory10);
+    
       // set the ranges
       const xScale = d3
         .scaleBand()
@@ -45,17 +45,17 @@ export default {
         .style("width", `${width}px`);
 
       // eslint-disable-next-line no-unused-vars
-      const bar = container
+      container
         .selectAll(".bar")
         .data(this.filteredData)
         .enter()
         .append("rect")
         .classed("bar", true)
         .attr("width", xScale.bandwidth())
-        .attr("height", (data) => roundedHeight - yScale(data.y))
+        .attr("height", (data) => roundedHeight - yScale(data.y + data.z))
         .attr("x", (data) => xScale(data.x))
-        .attr("y", (data) => yScale(data.y));
-
+        .attr("y", (data) => yScale(data.y + data.z))
+        .attr("fill", d=>color(d));
       // add the x Axis
       container
         .append("g")
@@ -66,8 +66,8 @@ export default {
 
       // add the y Axis
       container
-              .append("g")
-              .call(d3.axisLeft(yScale));
+        .append("g")
+        .call(d3.axisLeft(yScale));
     },
   },
   mounted() {
@@ -86,26 +86,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 .chart-container {
-    border: 1px solid navy;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: visible;
-  }
+  border: 1px solid navy;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: visible;
+}
 
-  .bar { 
-    fill: rgb(255, 0, 212);
-  }
+text {
+  fill: navy;
+  font-size: smaller;
+}
 
-  text {
-    fill: navy;
-    font-size: smaller;
-  }
-
-  path.domain {
-    stroke: transparent;
-  }
-
-  select {
-    margin-bottom: 20px;
-  }
+path.domain {
+  stroke: transparent;
+}
 </style>

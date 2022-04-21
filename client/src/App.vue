@@ -62,7 +62,7 @@ export default {
         .then((response) => {
           this.axisData = response.data.records
                                .filter(el => el.Country === this.selectedCountry)
-                               .map(el => ({x: el.Age, y: parseInt(el.Male), country: el.Country}));
+                               .map(el => ({x: el.Age, y: parseInt(el.Male), z: parseInt(el.Female), country: el.Country}));
         })
         .catch(function (error) {
           console.log(error);
