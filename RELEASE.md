@@ -1,4 +1,4 @@
-## VUE GRAPH APPS WITH D3, ELASTICSEARCH
+## VUE GRAPH APPS WITH D3, ELASTICSEARCH 7.10.2
 
 + This project is a full-stack apps with NodeJS and Express in Server side and VUE 3 framework in the client side. The apps shows data
 visualization of change of World Population based om Age Range from 0 to 100 +.
@@ -14,4 +14,4 @@ visualization of change of World Population based om Age Range from 0 to 100 +.
 *** Link to apps in Heroku ***
 [Vue-Graph](https://vue-diagram.herokuapp.com/)
 
-![screen shot](img/vue.PNG)
+![screen shot](img/vue.PNG =450x300)
