@@ -4,10 +4,17 @@
     <p>
       <i
         >(Population by country from 1950-2022. Data shows the change in shape
-        of population of country based on age in seven decades. Age Range: 0 -100+)</i
+        of population of country based on age in seven decades. Age Range: 0
+        -100+)</i
       >
     </p>
-    <p><i><strong>Bar Chart</strong> shows the total population. <strong>Pie Chart</strong> shows the percentage of Female in each age group.</i></p>
+    <p>
+      <i
+        ><strong>Bar Chart</strong> shows the total population.
+        <strong>Pie Chart</strong> shows the percentage of Female in each age
+        group.</i
+      >
+    </p>
     <br />
     <title>Data visualizasion</title>
     <form @submit.prevent="search('country', 'year')">
@@ -42,6 +49,25 @@
     </form>
     <br />
     <BarChart :axisData="axisData" v-if="axisData.length > 0" />
+    <br />
+    <table id="firstTable" v-if="axisData.length > 0">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Age</th>
+          <th>Female</th>
+          <th>Male</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(data, index) in axisData" :key="index">
+          <td>{{ data.country }}</td>
+          <td>{{ data.x }}</td>
+          <td>{{ data.z/1000}}</td>
+          <td>{{ data.y/1000}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -53,7 +79,7 @@ import BarChart from "./components/BarChart.vue";
 export default {
   name: "App",
   components: {
-    BarChart
+    BarChart,
   },
   data() {
     return {
@@ -127,5 +153,36 @@ h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2rem;
   color: rgb(5, 74, 116);
+}
+
+#firstTable {
+  margin-top: 5em;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#firstTable td,
+#firstTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#firstTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#firstTable tr:hover {
+  background-color: #ddd;
+}
+
+#firstTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #445676;
+  color: white;
 }
 </style>
