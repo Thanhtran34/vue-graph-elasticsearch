@@ -1,6 +1,5 @@
 // test health of elasticsearch connection
-//import {client} from "./connection.js";
-import 'dotenv/config'
+import {client} from "./connection.js";
 
 /* Get the health status */
 

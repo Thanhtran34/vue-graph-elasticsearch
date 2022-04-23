@@ -1,5 +1,5 @@
 // create an index in elasticsearch
-import {client} from "./connection.js";
+import {client} from "../connection.js";
 
 client.indices.create({  
   index: 'countries'
