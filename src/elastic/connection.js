@@ -1,11 +1,16 @@
 // Connect to elasticsearch
-import { Client } from "@elastic/elasticsearch";
+import elasticsearch from 'elasticsearch';
 
-export const client = new Client({
-  node: `${process.env.BASE_URL}`,
+let uri
+if(process.env.NODE === 'development') {
+   uri = process.env.LOCAL
+} else {
+  uri = process.env.BASE_URL
+}
 
-  auth: {
-    username: "elastic",
-    password: "YlaemlrrI+EwXn9h",
-  },
+export const client  = new elasticsearch.Client({
+  host: uri,
+  log: 'trace'
 });
+
+

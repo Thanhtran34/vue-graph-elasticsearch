@@ -6,7 +6,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "start:dev": "nodemon --inspect -r dotenv/config src/server.js",
+    "start:dev": "nodemon --inspect -r dotenv/config src/server.js src/elastic/connection.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,9 +23,10 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "@elastic/elasticsearch": "^7.17.0",
+    "aws-sdk": "^2.1120.0",
     "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
+    "elasticsearch": "^16.7.3",
     "express": "^4.17.3",
     "uniqid": "^5.4.0"
   },

@@ -6,9 +6,10 @@ import { client } from "../elastic/connection.js";
  * Encapsulates a home controller.
  */
 export class HomeController {
+
   // helper function to parse elasticsearch response
   parseElasticResponse(elasticResponse) {
-    const responseHits = elasticResponse.body.hits.hits;
+    const responseHits = elasticResponse.hits.hits;
     const result = responseHits.map((hit) => hit._source);
     return result;
   }

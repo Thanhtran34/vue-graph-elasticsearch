@@ -1,4 +1,5 @@
 //Create an express API with endpoint to query data from Elasticsearch
+import {client} from './elastic/connection.js'
 import express from "express";
 import cors from "cors";
 import { router } from "./routes/router.js";

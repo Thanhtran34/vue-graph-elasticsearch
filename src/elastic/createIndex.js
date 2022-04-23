@@ -1,5 +1,5 @@
 // create an index in elasticsearch
-import {client} from "../connection.js";
+import {client} from "./connection.js";
 
 client.indices.create({  
   index: 'countries'
@@ -8,6 +8,6 @@ client.indices.create({
     console.log(err);
   }
   else {
-    console.log("Create index response: ",resp);
+    console.log("Create index response: ", resp);
   }
 });
