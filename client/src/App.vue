@@ -71,7 +71,7 @@ export default {
       country = this.selectedCountry;
       year = this.selectedYear;
       axios
-        .get(`${process.env.VUE_APP_URL}/search-country/${country}/${year}`)
+        .get(`/search-country/${country}/${year}`)
         .then((response) => {
           this.axisData = response.data.records
             .filter((el) => el.Country === this.selectedCountry)
