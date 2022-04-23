@@ -1,5 +1,6 @@
 //Create an express API with endpoint to query data from Elasticsearch
-import {client} from './elastic/connection.js'
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 import express from "express";
 import cors from "cors";
 import { router } from "./routes/router.js";
@@ -7,8 +8,18 @@ import { router } from "./routes/router.js";
 // The main function of the application.
 const main = async () => {
   const app = express();
+  const directoryFullName = dirname(fileURLToPath(import.meta.url));
   // To allow cross origin connections so that the webapp can connect to our server
   app.use(cors());
+
+  if (process.env.NODE_ENV === 'development') {
+    // Serve static files.
+    app.use(express.static(join(directoryFullName, 'public')))
+
+    app.get('/', (req, res) => {
+      res.sendFile(join(directoryFullName + './public/index.html'))
+    })
+  }
 
   // Register routes.
   app.use("/", router);
