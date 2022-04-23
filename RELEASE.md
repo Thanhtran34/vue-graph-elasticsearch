@@ -14,4 +14,4 @@ visualization of change of World Population based om Age Range from 0 to 100 +.
 *** Link to apps in Heroku ***
 [Vue-Graph](https://vue-diagram.herokuapp.com/)
 
-<img src="img/vue.PNG" width="400">
+<img src="img/vue.PNG" width="450" height="350">
