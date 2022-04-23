@@ -13,7 +13,4 @@ visualization of change of World Population based om Age Range from 0 to 100 +.
 
 + D3 is used to draw bar chart and pie chart based on data they get from Bonsai ElasticSearch. Bar Chart show the total population (sum of female and male) of searched country in each year (seven decades and year range is 10 years) and the population is divided into groups based on Age Range. Pie Chart shows the percentage of Female of totalt population in the same year. 
 
-*** Link to apps in Heroku ***
-[Vue-Graph](https://vue-diagram.herokuapp.com/)
-
 <img src="img/vue.PNG" width="600" height="350">
